@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="Астрологический календарь - это как прогноз погоды, как общие и влияющие на всех людей ритмы солнца, луны и других планет.">
+<link rel="icon" type="image/png" href="/atmos_fav.png" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/style.css" rel="stylesheet" />
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/countdown.js"></script>
+<title>Атмос Астрологический календарь</title>
+</head>
+
+<body>
+
+	
+<script>
+	
+$(document).ready(function(){
+			$("#countdown").countdown({
+				date: "17 jun 2017 12:00:00",
+				format: "on"
+			},
+			
+			function() {
+				// callback function
+		});
+
+$('body').on('submit', '#send-form', function() {
+	
+	var form = $(this);
+	
+	$('input').removeClass('err');
+	
+	$.post($(this).attr('action'), $(this).serialize(), function(data) {
+		
+		if (data['stat'] === true) {
+			
+			$(form).empty().prepend('<div class="answer">Спасибо, ваше сообщение отправлено!</div>');
+			
+		} else {
+			
+			$.each(data['err'], function(id, name) {
+				$(form).find('input[name="'+name+'"]').addClass('err');
+			});
+							
+		}
+		
+		console.log(data)
+		
+	}, 'json');
+	
+	return false;
+	
+});
+		
+		
+		
+});	
+</script>
+
+<div class="container-fluid">
+
+	<section id="header">
+
+		<div class="container">
+			
+			<div class="row">
+				
+				<div class="col-md-9 slogan">
+					Определи свой звездный час сам
+				</div>
+				
+				<div class="col-md-3 logo">
+					<img src="/img/logo.png" />
+				</div>
+				
+				<div class="col-md-6">
+					
+					<div class="col-md-12 price">
+						<p><b>Астрологический календарь</b><br /> поможет тебе найти свой путь в<br /> жизни и преуспеть во всех<br /> начинаниях.</p>
+					</div>
+					
+					<div class="col-md-12 action clearfix">
+						<p><b>АКЦИЯ</b><br />Только сегодня</p>
+						<img src="/img/price.png" />
+					</div>
+					
+					<div class="col-md-12 timer clearfix">
+				
+						<ul id="countdown">
+							<li> <span class="days">00</span>
+								<p class="timeRefDays">дней</p>
+							</li>
+							<li> <span class="hours">00</span>
+								<p class="timeRefHours">часов</p>
+							</li>
+							<li> <span class="minutes">00</span>
+								<p class="timeRefMinutes">минут</p>
+							</li>
+							<li> <span class="seconds">00</span>
+								<p class="timeRefSeconds">секунд</p>
+							</li>
+						</ul>
+								
+						<a href="#send-form" class="btn_b pull-right">Заказать</a>
+					</div>
+					
+				</div>
+				
+				<div class="col-md-6 calendar">
+					<img src="/img/calendar.png" class="img-responsive" />
+				</div>
+				
+			</div>
+			
+		</div>
+	
+	</section>
+	
+	<section id="block-1">
+		
+		<h2>Наш календарь поможет вам:</h2>
+
+		<div class="container">
+
+			<div class="row">
+				
+				<div class="col-md-6 check">
+					
+					<div>Распланировать предстоящий год, месяц, день, минуту.</div>
+					
+					<div>Определить сложные периоды своей жизни</div>
+					
+					<div>Найти наиболее благоприятное время для: новых вложений, подписание контрактов, бракосочетания хирургических операций </div>
+					
+				</div>
+				
+				<div class="col-md-6 check">
+					
+					<div>Предостережет от невыгодных вложений</div>
+					
+					<div>Подскажет в какое время не стоит оставлять ребенка без присмотра</div>
+					
+					<div>Когда лучше не осуществлять крупные покупки</div>
+					
+					<div>Когда не стоит брать на себя долгосрочные обязательства</div>
+					
+				</div>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+	
+	<section id="block-2">
+		
+		<h2>Наши календари подходят для:</h2>
+
+		<div class="container">
+			
+			<div class="row">
+
+				<div class="col-md-4">
+					
+					<div class="item lr">
+					
+						<img src="/img/i1.png" />
+						<h3>Врачей</h3>
+						<p>Подскажет когда не стоит браться за серьезные операции</p>
+					
+					</div>
+					
+				</div>
+				
+				<div class="col-md-4">
+					
+					<div class="item ct">
+					
+						<h3>Бизнесменов и бизнес-леди</h3>
+						<p>Подскажет когда и с кем лучше подписывать контракты</p>
+						<img src="/img/i2.png" />
+					
+					</div>
+					
+				</div>
+				
+				<div class="col-md-4">
+					
+					<div class="item lr">
+					
+						<img src="/img/i3.png" />
+						<h3>Домохозяек</h3>
+						<p>Подскажет наилучший день для крупных трат и покупок</p>
+						
+					</div>
+					
+				</div>
+				
+			</div>
+		
+		</div>
+	
+	</section>
+	
+	<section id="block-3">
+		
+		<h2>И всех остальных кто ищет свой путь в жизни</h2>
+
+		<img src="/img/all.png" class="img-responsive" style="display: inline;" />
+				
+		<div class="button">
+			<a href="#send-form" class="btn_b">Заказать</a>
+		</div>
+	
+	</section>
+	
+	<section id="block-4">
+
+		<div class="container">
+			
+			<div class="row">
+				
+				<h2>Мнение специалиста</h2>
+				
+				<div class="col-md-8">
+					
+					<p>	
+					Астрологический календарь - это как прогноз погоды, как общие и влияющие на всех людей ритмы солнца, луны и других планет. Как рекомендации для всех на год, месяц и на каждый день. Следование общим для всех природным ритмам помогает нам всем быть в гармонии с самим собой и всеобщим целым. 
+					</p>
+					
+					<p>
+					АК это карта дорог которая показывает каждому из нас кратчайший путь от теперешнего состояния неопределенности, неудовлетворенности к состоянию возможному, желаемому. Календарь определяет серию задач, которые нужно пройти и решить человеку на пути к своей мечте или цели.
+					</p>
+					
+					<div class="stamp">
+					
+						Ученый астрофизик международной категории:
+					
+					</div>
+					
+				</div>
+				
+				<div class="col-md-4">
+					<img src="/img/expert.jpg" class="img-responsive" />
+				</div>
+				
+			</div>
+		
+		</div>
+	
+	</section>
+	
+	<section id="block-5">
+		
+		<h2>Отзывы</h2>
+
+		<div class="container">
+			
+			<div class="row">
+
+				<div class="col-md-12 comment">
+					<div class="col-md-2 col-sm-12 uimg">
+						<img src="/img/c1.png" />
+					</div>
+					<div class="col-md-10 col-sm-12">
+					<h3>Андрей Ефримов (36 года)</h3>
+					<h4>12.12.2017</h4>
+					Долгое время не верил в это и не хотел тратить ни копейки. Однажды друзья заказали мне этот календарь на день рождения, как подарок-шутку. Через пару дней решил заглянуть в него и попробовать следовать его подсказкам, результат меня поразил. Меня буквально через две недели повысили на работе, добавили неделю к общему отпуску, я смог купить себе новый автомобиль, а в конце лето лечу отдыхать на Канарские острова.
+					</div>
+				</div>
+				
+				<div class="col-md-12 comment">
+					<div class="col-md-10 col-sm-12">
+					<h3>Мария Совельева (29 лет)</h3>
+					<h4>12.12.2017</h4>
+					Долгое время не верил в это и не хотел тратить ни копейки. Однажды друзья заказали мне этот календарь на день рождения, как подарок-шутку. Через пару дней решил заглянуть в него и попробовать следовать его подсказкам, результат меня поразил. Меня буквально через две недели повысили на работе, добавили неделю к общему отпуску, я смог купить себе новый автомобиль, а в конце лето лечу отдыхать на Канарские острова.
+					</div>
+					<div class="col-md-2 col-sm-12 uimg">
+						<img src="/img/c2.png" />
+					</div>
+				</div>
+				
+				<div class="col-md-12 comment">
+					<div class="col-md-2 col-sm-12 uimg">
+						<img src="/img/c3.png" />
+					</div>
+					<div class="col-md-10 col-sm-12">
+					<h3>Алексей Фридман (31 год)</h3>
+					<h4>12.12.2017</h4>
+					
+					Долгое время не верил в это и не хотел тратить ни копейки. Однажды друзья заказали мне этот календарь на день рождения, как подарок-шутку. Через пару дней решил заглянуть в него и попробовать следовать его подсказкам, результат меня поразил. Меня буквально через две недели повысили на работе, добавили неделю к общему отпуску, я смог купить себе новый автомобиль, а в конце лето лечу отдыхать на Канарские острова.
+					</div>
+				</div>
+				
+			</div>
+		
+		</div>
+	
+	</section>
+	
+	<section id="block-6">
+
+		<div class="container">
+			
+			<h2>По всем вопросам пишите нам:</h2>
+			
+			<div class="row">
+				
+				<div class="col-md-4 cont">
+					<a href="#">
+						<img src="/img/mail.png" /><br />
+						atmos.calendar.info@gmail.com
+					</a>
+				</div>
+				<div class="col-md-4 cont">
+					<a href="#">
+						<img src="/img/skype.png" /><br />
+						atmos calendar
+					</a>
+				</div>
+				<div class="col-md-4 cont">
+					<a href="#">
+						<img src="/img/telegram.png" /><br />
+						атмос календарь
+					</a>
+				</div>
+			</div>
+		
+		</div>
+	
+	</section>	
+	
+	<section id="block-7">
+			
+			<div class="row b7">
+				
+				<div class="col-md-6 left clearfix">
+					
+					<div class="col-md-8 col-xs-12 pull-right">
+					
+						<div class="col-md-6 stic1"></div>
+						<div class="col-md-6 stic2"></div>
+						<div class="col-md-6 stic3"></div>
+						<div class="col-md-6 stic4"></div>
+					
+					</div>
+					
+				</div>
+				
+				<div class="col-md-6 right clearfix">
+					
+					<form action="/send-mail.php" method="post" class="col-md-6" id="send-form">
+						
+						<h3>Форма заказа</h3>
+							
+						<div class="form-group">
+							<input type="text" name="name" placeholder="Имя" class="form-control">
+						</div>
+						
+						<div class="form-group">
+							<input type="text" name="surname" placeholder="Фамилия" class="form-control">
+						</div>
+						
+						<div class="form-group">
+							<input type="text" name="mail" placeholder="Е-мейл" class="form-control">
+						</div>	
+						
+						<div class="form-group">
+							<label>Дата рождения</label>
+							<div class="form-inline">
+							<input type="text" name="day" placeholder="День" class="form-control w3">
+							<input type="text" name="month" placeholder="Месяц" class="form-control w3">
+							<input type="text" name="year" placeholder="Год" class="form-control w3">
+							</div>
+						</div>
+						
+						
+						
+						<div class="form-group">
+							<div class="form-inline">
+							<label style="width: 116px;">Время рождения</label>
+							<input type="text" name="hour" placeholder="Часы" class="form-control w3">
+							<input type="text" name="min" placeholder="Минуты" class="form-control w3">
+							</div>
+						</div>
+						
+						<div class="form-group">
+							<input type="text" name="location" placeholder="Место рождения" class="form-control">
+						</div>
+						
+						<button class="btn_b">Заказать</button>
+						
+					</form>
+					
+				</div>
+				
+			</div>
+	
+	</section>	
+	
+	<section id="footer">
+
+		<div class="container">
+			<img src="/img/footer.png" />
+			&nbsp; &copy; 2017 All right reserved
+		</div>
+	
+	</section>	
+		
+</div>
+
+</body>
+</html>
