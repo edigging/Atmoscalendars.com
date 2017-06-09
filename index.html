@@ -396,6 +396,12 @@ $('body').on('submit', '#send-form', function() {
 						<button class="btn_b">Заказать</button>
 						
 					</form>
+					<form action="https://merchant.webmoney.ru/lmi/payment.asp" method="POST">
+ <input type="hidden" name="LMI_PAYMENT_AMOUNT" value="5000.00">
+ <input type="hidden" name="LMI_PAYMENT_DESC_BASE64" value="0LDRgdGC0YDQvtC70L7Qs9C40YfQtdGB0LrQuNC5INC60LDQu9C10L3QtNCw0YDRjA==">
+ <input type="hidden" name="LMI_PAYEE_PURSE" value="R195982866918">
+<input type="submit" class="wmbtn" style="font-famaly:Verdana, Helvetica, sans-serif!important;padding:0 10px;height:30px;font-size:12px!important;border:1px solid #538ec1!important;background:#a4cef4!important;color:#fff!important;" value="&#1086;&#1087;&#1083;&#1072;&#1090;&#1080;&#1090;&#1100;5000.00 WMR ">
+</form>
 					
 				</div>
 				
